@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formas</title>
+</head>
+<body>
+<script>
+  let escolha = prompt("Escolha uma forma: quadrado, retangulo ou circulo")
+  let area = 0
+
+  if (escolha == "quadrado") {
+    let lado = parseFloat(prompt("Digite o lado:"))
+    area = lado * lado
+  }
+  else if (escolha == "retangulo") {
+    let base = parseFloat(prompt("Digite a base:"))
+    let altura = parseFloat(prompt("Digite a altura:"))
+    area = base * altura
+  }
+  else if (escolha == "circulo") {
+    let raio = parseFloat(prompt("Digite o raio:"))
+    area = 3.14 * raio * raio
+  }
+
+  area = area.toFixed(2)
+  console.log("Área: " + area)
+
+  if (Math.floor(area) % 2 == 0) {
+    console.log("Parabéns! O número é par!")
+  } else {
+    console.log("Você perdeu! O número é ímpar!")
+  }
+</script>
+</body>
+</html>
