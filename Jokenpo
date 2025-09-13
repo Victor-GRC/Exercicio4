@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jokenpo - Console</title>
+</head>
+<body>
+<script>
+  // simples Jokenpo com console.log
+  const opcoes = ["pedra", "papel", "tesoura"];
+  let pontos = 0;
+
+  while (true) {
+    let escolha = prompt("Escolha sua forma: pedra, papel ou tesoura");
+    if (escolha === null) { // usuário cancelou
+      console.log("Jogo cancelado. Seus pontos:", pontos);
+      break;
+    }
+    escolha = escolha.toLowerCase().trim();
+
+    if (!opcoes.includes(escolha)) {
+      console.log("Opção inválida. Tente de novo.");
+      continue;
+    }
+
+    // jogada da máquina (0,1,2)
+    let maquinaIndex = Math.floor(Math.random() * 3);
+    let maquina = opcoes[maquinaIndex];
+
+    console.log("Você: " + escolha + "  |  Máquina: " + maquina);
+
+    if (escolha === maquina) {
+      console.log("Empate! Vamos de novo.");
+      continue;
+    }
+
+    // verificar vencedor
+    // pedra > tesoura, tesoura > papel, papel > pedra
+    if (
+      (escolha === "pedra" && maquina === "tesoura") ||
+      (escolha === "tesoura" && maquina === "papel") ||
+      (escolha === "papel" && maquina === "pedra")
+    ) {
+      pontos = pontos + 1;
+      console.log("Você venceu essa rodada! +1 ponto. Pontos:", pontos);
+      console.log("O jogo continua... mas cuidado: se a máquina vencer, o jogo acaba.");
+      // continua o loop
+    } else {
+      console.log("A máquina venceu! Fim do jogo.");
+      console.log("Seu placar final:", pontos);
+      break; // termina o jogo quando a máquina vence
+    }
+  }
+</script>
+</body>
+</html>
